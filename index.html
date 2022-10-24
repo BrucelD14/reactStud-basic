@@ -13,24 +13,37 @@
 
 
     <!-- CDN REACT -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
     <script>
         /**
         const root = document.querySelector('#root');
         console.log(root);
-
+        
         const element = document.createElement('h1');
         console.log(element);
         element.textContent = 'Hello from JS';
         element.className = 'heading-1';
-
+        
         root.appendChild(element);
         **/
 
+        const root = document.querySelector('#root');
+        const p1 = React.createElement('p', {
+            children: 'Hello paragraf 1',
+        });
+        const p2 = React.createElement('p', {
+            children: 'Hello paragraf 2',
+        });
 
-        
+        const element = React.createElement(React.Fragment, {
+            children: [p1, p2],
+        })
+
+        console.log(element);
+
+        ReactDOM.render(element, root);
     </script>
 </body>
 
