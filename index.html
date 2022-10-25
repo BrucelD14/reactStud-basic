@@ -16,7 +16,10 @@
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
-    <script>
+    <!-- BABEL SCRIPT -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
         /**
         const root = document.querySelector('#root');
         console.log(root);
@@ -30,18 +33,14 @@
         **/
 
         const root = document.querySelector('#root');
-        const p1 = React.createElement('p', {
-            children: 'Hello paragraf 1',
-        });
-        const p2 = React.createElement('p', {
-            children: 'Hello paragraf 2',
-        });
 
-        const element = React.createElement(React.Fragment, {
-            children: [p1, p2],
-        })
-
-        console.log(element);
+        const element = (
+            <ul>
+                <li>Apple</li>
+                <li>Orange</li>
+                <li>Grape</li>    
+            </ul>
+        );
 
         ReactDOM.render(element, root);
     </script>
