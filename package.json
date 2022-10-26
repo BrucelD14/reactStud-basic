@@ -1,0 +1,19 @@
+{
+  "name": "reactStud",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/BrucelD14/reactStud-basic.git",
+  "author": "BrucelD14 <samuderaduta144@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/preset-react": "^7.18.6",
+    "lite-server": "^2.6.1"
+  },
+  "scripts": {
+    "build": "babel src --out-dir public -w",
+    "serves": "lite-server --baseDir public",
+    "start": "yarn build & yarn server"
+  }
+}
