@@ -1,13 +1,30 @@
 const root = document.querySelector("#root");
 
-function saatKlik(msg) {
-  alert(msg);
+function App() {
+  const state = React.useState(0);
+
+  const count = state[0];
+  const updateCount = state[1];
+
+  return (
+    <>
+      <button
+        onClick={function () {
+          updateCount(count - 1);
+        }}
+      >
+        -
+      </button>
+      <span>{count}</span>
+      <button
+        onClick={function () {
+          updateCount(count + 1);
+        }}
+      >
+        +
+      </button>
+    </>
+  );
 }
 
-console.log(saatKlik.bind(this, "hello ini klik"));
-
-const element = (
-  <button onClick={saatKlik.bind(this, "hello ini klik")}>Click Me</button>
-);
-
-ReactDOM.render(element, root);
+ReactDOM.render(<App />, root);
