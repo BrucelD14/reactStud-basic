@@ -1,15 +1,13 @@
 const root = document.querySelector("#root");
 
-function saatKlik() {
-    alert(1);
-  };
+function saatKlik(msg) {
+  alert(msg);
+}
+
+console.log(saatKlik.bind(this, "hello ini klik"));
 
 const element = (
-  <button
-    onClick={saatKlik}
-  >
-    Click Me
-  </button>
+  <button onClick={saatKlik.bind(this, "hello ini klik")}>Click Me</button>
 );
 
 ReactDOM.render(element, root);
