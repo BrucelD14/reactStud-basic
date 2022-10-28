@@ -1,5 +1,5 @@
 {
-  "name": "reactStud",
+  "name": "react-basic",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/BrucelD14/reactStud-basic.git",
@@ -13,7 +13,6 @@
   },
   "scripts": {
     "build": "babel src --out-dir public -w",
-    "serves": "lite-server --baseDir public",
-    "start": "yarn build & yarn server"
+    "serve": "lite-server --baseDir public"
   }
 }
