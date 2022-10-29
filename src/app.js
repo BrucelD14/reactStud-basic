@@ -4,12 +4,11 @@ function App() {
   const [diklik, setDiklik] = React.useState(false);
   const [count, setCount] = React.useState(0);
 
-  React.useEffect(
-    function () {
-      console.log(document.getElementById("judul"));
-    },
-    [diklik]
-  );
+
+  // mount, did mount, did update
+  React.useEffect(function () {
+    console.log("data fetching");
+  });
 
   return (
     <>
@@ -33,6 +32,4 @@ function App() {
   );
 }
 
-setTimeout(function () {
-  ReactDOM.render(<App />, root);
-}, 1000);
+ReactDOM.render(<App />, root);
