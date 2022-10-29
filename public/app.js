@@ -5,7 +5,10 @@ function App() {
 
   // mount, did mount, did update
   React.useEffect(function () {
-    console.log("data fetching");
+    console.log("init carousel");
+    return function () {
+      console.log("destroy carousel");
+    };
   });
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", {
     id: "judul"
