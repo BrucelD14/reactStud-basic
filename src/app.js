@@ -2,18 +2,18 @@ const root = document.querySelector("#root");
 
 function App() {
   const [login, setLogin] = React.useState(false);
+  const judulRef = React.useRef(null);
+
+  React.useEffect(function () {
+    setTimeout(function() {
+      judulRef.current.textContent = 'Aplikasi';
+
+    }, 1000)
+  }, []);
 
   return (
     <>
-      <h1>Application</h1>
-      <p>{!login && <b>Kamu belum login</b>}</p>
-      <button
-        onClick={function () {
-          setLogin(true);
-        }}
-      >
-        Login
-      </button>
+      <h1 ref={judulRef}>Application</h1>
     </>
   );
 }
