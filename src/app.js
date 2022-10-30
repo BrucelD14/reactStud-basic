@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <h1>Application</h1>
-      <p>{login ? <b>Kamu sudah login</b> : <i>Kamu belum login</i>}</p>
+      <p>{!login && <b>Kamu belum login</b>}</p>
       <button
         onClick={function () {
           setLogin(true);
