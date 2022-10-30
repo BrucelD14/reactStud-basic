@@ -1,36 +1,24 @@
 const root = document.querySelector("#root");
 
 function App() {
-  const [diklik, setDiklik] = React.useState(false);
-  const [count, setCount] = React.useState(0);
+  const [login, setLogin] = React.useState(false);
 
-  // mount, did mount, did update
-  React.useEffect(function () {
-    console.log("init carousel");
-
-    return function () {
-      console.log("destroy carousel");
-    };
-  });
+  if(login) {
+    return (
+      <h1>Udah login, Bang!</h1>
+    )
+  }
 
   return (
     <>
-      <h1 id="judul">Hello ini judul</h1>
+      <h1>Login dulu, Bang!</h1>
       <button
         onClick={function () {
-          setDiklik(true);
+          setLogin(true);
         }}
       >
-        Klik aku dong
+        Login
       </button>
-      <button
-        onClick={function () {
-          setCount(count + 1);
-        }}
-      >
-        Tambah
-      </button>
-      Nilai saat ini: {count}
     </>
   );
 }
