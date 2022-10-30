@@ -3,10 +3,19 @@ const root = document.querySelector("#root");
 function App() {
   const [login, setLogin] = React.useState(false);
 
-  if(login) {
+  if (login) {
     return (
-      <h1>Udah login, Bang!</h1>
-    )
+      <>
+        <h1>Udah login, Bang!</h1>
+        <button
+          onClick={function () {
+            setLogin(false);
+          }}
+        >
+          Logout
+        </button>
+      </>
+    );
   }
 
   return (
