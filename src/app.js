@@ -4,11 +4,21 @@ function App() {
   const [activity, setActivity] = React.useState("");
   const [todos, setTodos] = React.useState([]);
 
+  function generateId() {
+    return Date.now();
+  }
+
   function addToDoHandler(event) {
     event.preventDefault();
 
-    setTodos([...todos, activity]);
-    setActivity('');
+    setTodos([
+      ...todos,
+      {
+        id: generateId(),
+        activity: activity,
+      },
+    ]);
+    setActivity("");
   }
 
   return (
@@ -26,8 +36,8 @@ function App() {
         <button type="submit">Tambah</button>
       </form>
       <ul>
-        {todos.map(function(todo) {
-          return <li key={todo}>{todo}</li>
+        {todos.map(function (todo) {
+          return <li key={todo.id}>{todo.activity}</li>;
         })}
       </ul>
     </>
