@@ -1,36 +1,35 @@
 const root = document.querySelector("#root");
 
 function App() {
-  const [news, setNews] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
+  const [activity, setActivity] = React.useState("");
+  const [todos, setTodos] = React.useState([]);
 
-  React.useEffect(function () {
-    async function getData() {
-      const request = await fetch(
-        "https://api.spaceflightnewsapi.net/v3/blogs"
-      );
-      const response = await request.json();
+  function addToDoHandler(event) {
+    event.preventDefault();
 
-      setNews(response);
-      setLoading(false);
-    }
-    getData();
-  }, []);
+    setTodos([...todos, activity]);
+    setActivity('');
+  }
 
   return (
     <>
-      <h1>Data Fetch</h1>
-      {loading ? (
-        <i>Loading data... </i>
-      ) : (
-        <ul>
-          {news.map(function (item) {
-            return (
-            <li key={item.id}>{item.title}</li>
-            )
-          })}
-        </ul>
-      )}
+      <h1>Simple Todo List</h1>
+      <form onSubmit={addToDoHandler}>
+        <input
+          type="text"
+          value={activity}
+          placeholder="Nama aktivitas"
+          onChange={function (event) {
+            setActivity(event.target.value);
+          }}
+        />
+        <button type="submit">Tambah</button>
+      </form>
+      <ul>
+        {todos.map(function(todo) {
+          return <li key={todo}>{todo}</li>
+        })}
+      </ul>
     </>
   );
 }
