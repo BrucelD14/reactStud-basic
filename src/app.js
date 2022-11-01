@@ -27,7 +27,7 @@ function App() {
 
       setTodos(updatedTodos);
 
-      return;
+      return cancelEditHandler();
     }
 
     setTodos([
@@ -46,11 +46,17 @@ function App() {
     });
 
     setTodos(filteredTodos);
+    if (edit.id) cancelEditHandler();
   }
 
   function editTodoHandler(todo) {
     setActivity(todo.activity);
     setEdit(todo);
+  }
+
+  function cancelEditHandler() {
+    setEdit({});
+    setActivity("");
   }
 
   return (
@@ -66,6 +72,7 @@ function App() {
           }}
         />
         <button type="submit">{edit.id ? "Simpan Perubahan" : "Tambah"}</button>
+        {edit.id && <button onClick={cancelEditHandler}>Batal Edit</button>}
       </form>
       <ul>
         {todos.map(function (todo) {
