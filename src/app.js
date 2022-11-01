@@ -13,7 +13,20 @@ function App() {
     event.preventDefault();
 
     if (edit.id) {
-      console.log("edit");
+      const updatedTodo = {
+        id: edit.id,
+        activity,
+      };
+
+      const editTodoIndex = todos.findIndex(function (todo) {
+        return todo.id == edit.id;
+      });
+
+      const updatedTodos = [...todos];
+      updatedTodos[editTodoIndex] = updatedTodo;
+
+      setTodos(updatedTodos);
+
       return;
     }
 
