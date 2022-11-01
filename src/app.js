@@ -2,37 +2,48 @@ const root = document.querySelector("#root");
 
 function App() {
   const [activity, setActivity] = React.useState("");
+  const [edit, setEdit] = React.useState({});
   const [todos, setTodos] = React.useState([]);
 
   function generateId() {
     return Date.now();
   }
 
-  function addToDoHandler(event) {
+  function saveToDoHandler(event) {
     event.preventDefault();
+
+    if (edit.id) {
+      console.log("edit");
+      return;
+    }
 
     setTodos([
       ...todos,
       {
         id: generateId(),
-        activity: activity,
+        activity,
       },
     ]);
     setActivity("");
   }
 
   function removeTodoHandler(todoId) {
-    const filteredTodos = todos.filter(function(todo) {
+    const filteredTodos = todos.filter(function (todo) {
       return todo.id !== todoId;
-    })
+    });
 
     setTodos(filteredTodos);
+  }
+
+  function editTodoHandler(todo) {
+    setActivity(todo.activity);
+    setEdit(todo);
   }
 
   return (
     <>
       <h1>Simple Todo List</h1>
-      <form onSubmit={addToDoHandler}>
+      <form onSubmit={saveToDoHandler}>
         <input
           type="text"
           value={activity}
@@ -41,14 +52,17 @@ function App() {
             setActivity(event.target.value);
           }}
         />
-        <button type="submit">Tambah</button>
+        <button type="submit">{edit.id ? "Simpan Perubahan" : "Tambah"}</button>
       </form>
       <ul>
         {todos.map(function (todo) {
           return (
             <li key={todo.id}>
               {todo.activity}
-              <button onClick={removeTodoHandler.bind(this, todo.id)}>Hapus</button>
+              <button onClick={editTodoHandler.bind(this, todo)}>Edit</button>
+              <button onClick={removeTodoHandler.bind(this, todo.id)}>
+                Hapus
+              </button>
             </li>
           );
         })}
